@@ -5,7 +5,7 @@ import javax.persistence.*;
  * Created by 潮汐 on 2017/5/13.
  */
 @Entity
-@Table
+@Table(name = "ye_task")
 public class Task {
     @Id
     @Column

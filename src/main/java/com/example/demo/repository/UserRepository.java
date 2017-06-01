@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findByLogin_name(String login_in);
+    User findByLoginName(String loginName);
 }
+

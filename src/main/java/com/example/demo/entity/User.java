@@ -1,33 +1,72 @@
 package com.example.demo.entity;
-        import javax.persistence.Entity;
-        import javax.persistence.Table;
+        import com.fasterxml.jackson.annotation.JsonIgnore;
+        import org.hibernate.validator.constraints.Email;
+        import org.hibernate.validator.constraints.Length;
+        import org.hibernate.validator.constraints.NotBlank;
+        import org.hibernate.validator.constraints.Range;
+        import org.springframework.format.annotation.DateTimeFormat;
+
+        import javax.persistence.*;
+        import javax.validation.constraints.NotNull;
         import javax.xml.crypto.Data;
+        import java.time.LocalDateTime;
+        import java.util.Date;
 
 /**
  * Created by 潮汐 on 2017/5/13.
  */
 @Entity
-@Table
+@Table(name = "ye_user")
 public class User {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private  String login_name;
-    private  String name;
+
+    @Column
+    @NotNull
+    @Length(min = 6, max = 10)
+    private  String loginName;
+
+    @Length(min = 6, max = 10)
+    @Column
+    private String name;
+
+    @NotNull
+    @Column
     private  String password;
+
+    @Column
     private  String salt;
+
+    @Column
     private  String roles;
-    private Data register_date;
+
+    @Column
+    private LocalDateTime registerDate;
+
+    @Column
+    private String email;
 
     public User() {
     }
 
-    public User(Integer id, String login_name, String name, String password, String salt, String roles, Data register_date) {
-        this.id = id;
-        this.login_name = login_name;
+    public User(String loginName, String name, String password, String salt, String roles, LocalDateTime registerDate, String email) {
+        this.loginName = loginName;
         this.name = name;
         this.password = password;
         this.salt = salt;
         this.roles = roles;
-        this.register_date = register_date;
+        this.registerDate = registerDate;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getId() {
@@ -36,14 +75,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getLogin_name() {
-        return login_name;
-    }
-
-    public void setLogin_name(String login_name) {
-        this.login_name = login_name;
     }
 
     public String getName() {
@@ -78,12 +109,34 @@ public class User {
         this.roles = roles;
     }
 
-    public Data getRegister_date() {
-        return register_date;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setRegister_date(Data register_date) {
-        this.register_date = register_date;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public LocalDateTime getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(LocalDateTime registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", loginName='" + loginName + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", roles='" + roles + '\'' +
+                ", registerDate=" + registerDate +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
 

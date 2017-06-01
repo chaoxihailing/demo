@@ -17,9 +17,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "getuser")
-    public String getUser(String login_name, Model model){
-        model.addAttribute(userRepository.findByLogin_name(login_name));
-        return "user/test";
-    }
+//    @RequestMapping(value = "getuser")
+//    public String getUser(String login_name, Model model){
+//        model.addAttribute(userRepository.findByLogin_name(login_name));
+//        return "user/test";
+//    }
 }

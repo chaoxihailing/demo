@@ -17,8 +17,8 @@ public class SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
 
-    public List<Subject> findBySectionName(String sectionName){
-        return subjectRepository.findAllBySection_Name(sectionName);
+    public List<Subject> findBySectionId(Integer sectionId){
+        return subjectRepository.findAllBySectionId(sectionId);
     }
 
     public void saveSubject(Subject subject){

@@ -9,6 +9,6 @@ import java.util.List;
  * Created by 潮汐 on 2017/5/24.
  */
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
-    public List<Subject> findAllBySection_Name(String sectionName);
+    public List<Subject> findAllBySectionId(Integer sectionId);
 
 }

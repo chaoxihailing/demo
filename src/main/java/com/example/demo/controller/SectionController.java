@@ -10,12 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by 潮汐 on 2017/5/24.
  */
 @Controller
 @RequestMapping(value = "/section")
-@SessionAttributes("pet")
 public class SectionController {
 
     @Autowired
@@ -37,13 +38,12 @@ public class SectionController {
 
     }
 
-    @RequestMapping(value = "/{sectionName}/list")
-    public String listSubject(@PathVariable("sectionName") String sectionName, Model model){
-            model.addAttribute("result",subjectService.findBySectionName(sectionName));
+    @RequestMapping(value = "/{sectionId}/list")
+    public String listSubject(@PathVariable("sectionId") Integer sectionId, Model model, HttpSession httpSession){
+            model.addAttribute("result",subjectService.findBySectionId(sectionId));
+            httpSession.setAttribute("sectionId", sectionId);
             return "views/subject/listSubject";
-
     }
-
 
 
 }

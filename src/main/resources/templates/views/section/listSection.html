@@ -41,14 +41,17 @@
                 <table >
                     <thead>
                         <tr>
+                            <th>序号</th>
                             <th>内容</th>
                             <th>创建时间</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr th:each="section: ${result}">
+                                <td th:text="${section.id}">
+                                </td>
                                 <td>
-                                    <a th:href="@{/section/}+ ${section.name}+ @{/list}">
+                                    <a th:href="@{/section/}+ ${section.id}+ @{/list}">
                                         <span th:text="${{section.name}}"></span>
                                     </a>
 
